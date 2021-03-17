@@ -1,0 +1,43 @@
+.navbar {
+    padding: 2rem;
+    background: var(--nav-bar-bg-color);
+    color: #fff;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    width: 100%;
+
+    a {
+        float: left;
+        display: block;
+    }
+    
+    .auth-buttons {
+        float: right;
+    }
+
+    .auth-buttons a {
+        padding-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        .auth-buttons {
+            float: none;
+        }
+
+        a {
+            float: none;
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 1rem;
+        }
+  
+      .title {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+    }
+  }
