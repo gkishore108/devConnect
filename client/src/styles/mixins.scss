@@ -18,3 +18,10 @@
         box-shadow: var(--box-shadow)
     }
 }
+
+@mixin card() {
+    padding: 1rem;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+}

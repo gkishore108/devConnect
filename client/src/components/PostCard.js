@@ -1,19 +1,22 @@
 import React from "react";
 
+import "./PostCard.scss";
+
 function PostCard({ postData }) {
   return (
-    <div className='class'>
+    <div className='post-card'>
       <h2>{postData.title}</h2>
-      <iframe
-        title={postData._id}
-        width='550'
-        height='315'
-        src={postData.link}
-        frameborder='0'
-        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-        allowfullscreen
-      ></iframe>
-      <textarea value={postData.description} readOnly={true} />
+      <div className='resp-container'>
+        <iframe
+          className='resp-iframe'
+          title={postData._id}
+          src={postData.link}
+          frameBorder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+          allowFullScreen
+        ></iframe>
+      </div>
+      <p>{postData.description}</p>
     </div>
   );
 }

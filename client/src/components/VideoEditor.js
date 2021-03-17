@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import "./VideoEditor.scss";
+
 function VideoEditor({ setOpenEditor, getPost }) {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
@@ -35,16 +37,16 @@ function VideoEditor({ setOpenEditor, getPost }) {
   }
 
   return (
-    <div className='class'>
+    <div className='editor'>
       <form onSubmit={addPost}>
-        <label htmlFor='input-title'>Title</label>
+        <label htmlFor='input-title'>Title *</label>
         <input
           id='input-title'
           type='text'
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label htmlFor='input-link'>Youtube Link</label>
+        <label htmlFor='input-link'>Youtube Link *</label>
         <input
           id='input-link'
           type='text'
@@ -57,10 +59,16 @@ function VideoEditor({ setOpenEditor, getPost }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-        <button type='button' onClick={() => setOpenEditor(false)}>
+        <button
+          className='btn-cancel'
+          type='button'
+          onClick={() => setOpenEditor(false)}
+        >
           Cancel
         </button>
-        <button type='submit'>Save</button>
+        <button className='btn-submit' type='submit'>
+          Save
+        </button>
       </form>
     </div>
   );
