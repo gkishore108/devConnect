@@ -18,7 +18,6 @@ const validURL = (str) => {
 
 // @route  GET api/videoCard
 // @desc   Get all the video card
-// @access Public
 router.get("/videoCard", async (req, res) => {
   try {
     const userPost = await UserPost.find().sort({ createdAt: -1 });
@@ -31,7 +30,6 @@ router.get("/videoCard", async (req, res) => {
 
 // @route  POST api/videoCard
 // @desc   Get all the video card
-// @access Public
 router.post("/videoCard", async (req, res) => {
   try {
     const { title, link, description } = req.body;
@@ -67,7 +65,6 @@ router.post("/videoCard", async (req, res) => {
 
 // @route  DELETE api/videoCard/:id
 // @desc   Get all the video card
-// @access Public
 router.delete("/videoCard/:id", async (req, res) => {
   try {
     const userPost = await UserPost.findById(req.params.id);
