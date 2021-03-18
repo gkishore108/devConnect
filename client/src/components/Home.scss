@@ -1,0 +1,7 @@
+@import "../styles/mixins.scss";
+
+.class {
+    button {
+        @include btn();
+    }
+}

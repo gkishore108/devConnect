@@ -2,6 +2,13 @@ const mongoose = require("mongoose");
 
 const videoCardSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
+    userName: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,
@@ -13,11 +20,11 @@ const videoCardSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    likes: [],
-    comments: [
+    likes: [
       {
-        text: {
-          type: String,
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "users",
         },
       },
     ],

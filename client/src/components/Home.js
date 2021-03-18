@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import PostCard from "./PostCard";
 import VideoEditor from "./VideoEditor";
 
+import "./Home.scss";
+
 function Home() {
   const [postData, setPostData] = useState([]);
   const [openEditor, setOpenEditor] = useState(false);

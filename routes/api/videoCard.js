@@ -1,5 +1,7 @@
 const express = require("express");
 const UserPost = require("../../models/VideoCardModel");
+const auth = require("../../middleware/auth");
+const User = require("../../models/UserModel");
 
 const router = express.Router();
 
@@ -18,6 +20,7 @@ const validURL = (str) => {
 
 // @route  GET api/videoCard
 // @desc   Get all the video card
+// @access Public
 router.get("/videoCard", async (req, res) => {
   try {
     const userPost = await UserPost.find().sort({ createdAt: -1 });
@@ -30,11 +33,13 @@ router.get("/videoCard", async (req, res) => {
 
 // @route  POST api/videoCard
 // @desc   Get all the video card
-router.post("/videoCard", async (req, res) => {
+// @access Protected
+router.post("/videoCard", auth, async (req, res) => {
   try {
     const { title, link, description } = req.body;
 
     //validation
+
     if (!title || !link) {
       return res.status(400).json({
         errorMessage: "Please enter title and a video link",
@@ -47,10 +52,14 @@ router.post("/videoCard", async (req, res) => {
       });
     }
 
+    const getUser = await User.findById(req.user);
+
     const videoCardData = {
       title,
       link,
       description,
+      user: req.user,
+      userName: getUser.userName,
     };
 
     const userPost = new UserPost(videoCardData);
@@ -78,6 +87,58 @@ router.delete("/videoCard/:id", async (req, res) => {
     await userPost.remove();
 
     res.status(200).json("Post Removed!!");
+  } catch (err) {
+    return res.status(500).send("Server Error");
+  }
+});
+
+// @route  GET api/videoCard/me
+// @desc   Get all the video card of a user
+// @access Protected
+router.get("/videoCard/me", auth, async (req, res) => {
+  try {
+    const userPost = await UserPost.find({ user: req.user }).sort({
+      createdAt: -1,
+    });
+
+    if (!userPost) {
+      return res.status(400).json({
+        errorMessage: "No Posts Found!",
+      });
+    }
+
+    res.status(200).json(userPost);
+  } catch (err) {
+    return res.status(500).send("Server Error");
+  }
+});
+
+// @route  PUT api/videoCard/like/:id
+// @desc   Like a post
+// @access Protected
+router.put("/videoCard/like/:id", auth, async (req, res) => {
+  try {
+    const userPost = await UserPost.findById(req.params.id);
+
+    if (!userPost) {
+      return res.status(400).json({
+        errorMessage: "Not Found!",
+      });
+    }
+
+    if (
+      userPost.likes.filter((like) => like.user.toString() === req.user)
+        .length > 0
+    ) {
+      return res.status(400).json({
+        errorMessage: "Post already liked!",
+      });
+    }
+
+    userPost.likes.unshift({ user: req.user });
+    await userPost.save();
+
+    res.json(userPost.likes);
   } catch (err) {
     return res.status(500).send("Server Error");
   }

@@ -18,12 +18,15 @@
     }
 
     .btn-cancel {
+        @include btn();
         &:hover {
             background: var(--danger-light-color);
         }
     }
 
     .btn-submit {
+        @include btn();
+
         &:hover {
             background: var(--submit-light-color);
         }
