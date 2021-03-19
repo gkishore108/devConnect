@@ -3,7 +3,7 @@
 .editor {
     @include card();
 
-    margin-bottom: 2rem;
+    margin: 2rem;
 
     label, input, textarea {
         display: block;
@@ -15,6 +15,7 @@
         border-bottom: solid rgb(177, 160, 85);
         border-bottom-width: 2px;
         width: 80%;
+        outline: none;
     }
 
     .btn-cancel {

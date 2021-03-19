@@ -22,6 +22,6 @@
 @mixin card() {
     padding: 1rem;
     border-radius: 10px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.712) ;
     box-shadow: var(--box-shadow);
 }
