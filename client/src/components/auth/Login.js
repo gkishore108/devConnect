@@ -28,11 +28,11 @@ function Login() {
         <h3>Sign In</h3>
       </header>
       <form className='form' onSubmit={(e) => submitData(e)}>
-        <div class='form-group'>
+        <div className='form-group'>
           <input
             type='email'
             placeholder='Email *'
-            class='form-input'
+            className='form-input'
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
@@ -40,11 +40,11 @@ function Login() {
           />
         </div>
 
-        <div class='form-group'>
+        <div className='form-group'>
           <input
             type='password'
             placeholder='Password *'
-            class='form-input'
+            className='form-input'
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
@@ -52,7 +52,7 @@ function Login() {
           />
         </div>
 
-        <button class='btn' type='submit'>
+        <button className='btn' type='submit'>
           Login
         </button>
       </form>

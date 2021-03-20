@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "../../styles/form.scss";
 
+import { setAlert } from "../../actions/alert";
+import { useDispatch } from "react-redux";
+import Alert from "../misc/Alert";
+
 function Register() {
   const [formData, setFormData] = useState({
     userName: "",
@@ -11,6 +15,8 @@ function Register() {
 
   const { userName, email, password, passwordVerify } = formData;
 
+  const dispatch = useDispatch();
+
   function onChange(e) {
     setFormData({ ...formData, [e.target.name]: [e.target.value] });
   }
@@ -18,7 +24,7 @@ function Register() {
   function submitData(e) {
     e.preventDefault();
     if (password !== passwordVerify) {
-      console.log("Password doesn't match");
+      dispatch(setAlert("Password does not match", "danger"));
     } else {
       console.log(formData);
     }
@@ -26,6 +32,7 @@ function Register() {
 
   return (
     <div className='auth-form'>
+      <Alert />
       <header className='user-header'>
         <img
           src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg'
@@ -34,7 +41,7 @@ function Register() {
         <h3 className='user-title'>Register here to gain access!</h3>
       </header>
       <form className='form' onSubmit={(e) => submitData(e)}>
-        <div class='form-group'>
+        <div className='form-group'>
           <input
             type='text'
             placeholder='Username'
@@ -45,11 +52,11 @@ function Register() {
           />
         </div>
 
-        <div class='form-group'>
+        <div className='form-group'>
           <input
             type='email'
             placeholder='Email *'
-            class='form-input'
+            className='form-input'
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
@@ -57,11 +64,11 @@ function Register() {
           />
         </div>
 
-        <div class='form-group'>
+        <div className='form-group'>
           <input
             type='password'
             placeholder='Password *'
-            class='form-input'
+            className='form-input'
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
@@ -69,11 +76,11 @@ function Register() {
           />
         </div>
 
-        <div class='form-group'>
+        <div className='form-group'>
           <input
             type='password'
             placeholder='Verify Password *'
-            class='form-input'
+            className='form-input'
             name='passwordVerify'
             value={passwordVerify}
             onChange={(e) => onChange(e)}
@@ -81,7 +88,7 @@ function Register() {
           />
         </div>
 
-        <button class='btn' type='submit'>
+        <button className='btn' type='submit'>
           Register
         </button>
       </form>
