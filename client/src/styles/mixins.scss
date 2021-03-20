@@ -1,0 +1,27 @@
+@mixin lnk() {
+    color: var(--text-link-color);
+    font-weight: bold;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
+@mixin btn {
+    margin: 1rem;
+    background: #00acc6;
+    color: #fff;
+    padding: 0.7rem;
+    border-radius: 10px;
+
+    &:hover {
+        box-shadow: var(--box-shadow)
+    }
+}
+
+@mixin card() {
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.712) ;
+    box-shadow: var(--box-shadow);
+}

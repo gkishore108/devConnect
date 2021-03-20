@@ -1,0 +1,31 @@
+@import "../styles/mixins.scss";
+
+.post-card {
+    @include card();
+    margin: 2rem 1rem;
+
+    h2 {
+        color: #ff8200;
+        border-bottom: solid #5b6770;
+    }
+    h2, iframe, p {
+        margin-bottom: 2rem;
+    }
+
+    .resp-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 56.25%;
+        margin-bottom: 2rem;
+    }
+
+    .resp-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+}

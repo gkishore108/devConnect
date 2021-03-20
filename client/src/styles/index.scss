@@ -1,0 +1,63 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--primary-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-size: 200% 100% !important;
+  animation: move 10s ease infinite;
+  transform: translate3d(0, 0, 0);
+  background: linear-gradient(45deg, var(--nav-bar-bg-color) 10%, #fff 90%);
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  // max-width: 1200px;
+  margin: 0 auto;
+}
+
+// reset 
+
+button {
+  border: unset;
+  background: unset;
+  font: unset;
+  color: unset;
+  cursor: pointer;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+  @include lnk();
+}
+
+input,
+textarea {
+  border: unset;
+  color: unset;
+  background: unset;
+  font: unset;
+}
+
+@keyframes move {
+  0% {
+      background-position: 0 0
+  }
+
+  50% {
+      background-position: 100% 0
+  }
+
+  100% {
+      background-position: 0 0
+  }
+}

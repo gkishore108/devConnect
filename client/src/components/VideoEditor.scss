@@ -1,0 +1,35 @@
+@import "../styles/mixins.scss";
+
+.editor {
+    @include card();
+
+    margin: 2rem;
+
+    label, input, textarea {
+        display: block;
+        width: 100%;
+        margin: 1rem;
+    }
+
+    input,textarea {
+        border-bottom: solid rgb(177, 160, 85);
+        border-bottom-width: 2px;
+        width: 80%;
+        outline: none;
+    }
+
+    .btn-cancel {
+        @include btn();
+        &:hover {
+            background: var(--danger-light-color);
+        }
+    }
+
+    .btn-submit {
+        @include btn();
+
+        &:hover {
+            background: var(--submit-light-color);
+        }
+    }
+}
