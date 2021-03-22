@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/auth";
+import Alert from "../misc/Alert";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -8,18 +12,26 @@ function Login() {
 
   const { email, password } = formData;
 
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   function onChange(e) {
-    setFormData({ ...formData, [e.target.name]: [e.target.value] });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   function submitData(e) {
     e.preventDefault();
+    dispatch(login({ email, password }));
+    console.log(isAuthenticated);
+  }
 
-    console.log(formData);
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
   }
 
   return (
     <div className='auth-form'>
+      <Alert />
       <header className='user-header'>
         <img
           src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg'
@@ -36,7 +48,6 @@ function Login() {
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
 
@@ -48,7 +59,6 @@ function Login() {
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
 

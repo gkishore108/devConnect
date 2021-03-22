@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
 
     jwt.sign(payload, process.env.JSEC, (error, token) => {
       if (error) throw error;
-      res.json(token);
+      res.json({ token });
     });
   } catch (error) {
     return res.status(500).send("Server Error");
