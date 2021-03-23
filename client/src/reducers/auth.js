@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  LOGOUT,
 } from "../actions/types";
 
 const initialState = {
@@ -35,7 +36,7 @@ function alertReducer(state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       };
-    case AUTH_ERROR:
+
     case REGISTER_FAIL:
     case LOGIN_FAIL:
       localStorage.removeItem("token");
@@ -44,6 +45,17 @@ function alertReducer(state = initialState, action) {
         token: null,
         isAuthenticated: false,
         loading: false,
+      };
+
+    case AUTH_ERROR:
+    case LOGOUT:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
       };
     default:
       return state;

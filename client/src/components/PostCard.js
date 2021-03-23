@@ -17,6 +17,7 @@ function PostCard({ postData }) {
         ></iframe>
       </div>
       <p>{postData.description}</p>
+      <button>Like</button>
     </div>
   );
 }
