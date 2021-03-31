@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../../styles/form.scss";
+import { Redirect } from "react-router-dom";
 
 import { setAlert } from "../../actions/alert";
-import { useDispatch } from "react-redux";
+import { register } from "../../actions/auth";
+import { useDispatch, useSelector } from "react-redux";
 import Alert from "../misc/Alert";
 
 function Register() {
@@ -16,9 +18,10 @@ function Register() {
   const { userName, email, password, passwordVerify } = formData;
 
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   function onChange(e) {
-    setFormData({ ...formData, [e.target.name]: [e.target.value] });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   function submitData(e) {
@@ -26,8 +29,12 @@ function Register() {
     if (password !== passwordVerify) {
       dispatch(setAlert("Password does not match", "danger"));
     } else {
-      console.log(formData);
+      dispatch(register({ userName, email, password, passwordVerify }));
     }
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
   }
 
   return (
@@ -60,7 +67,6 @@ function Register() {
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
 
@@ -72,7 +78,6 @@ function Register() {
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
 
@@ -84,7 +89,6 @@ function Register() {
             name='passwordVerify'
             value={passwordVerify}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
 
