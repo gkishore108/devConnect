@@ -1,46 +1,47 @@
 .navbar {
-    padding: 2rem;
-    color: var(--primary-text-color);
-    background: #fff;
-    margin-bottom: 2rem;
-    overflow: hidden;
-    width: 100%;
+  padding: 2rem;
+  color: var(--primary-text-color);
+  background: #fff;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  width: 100%;
 
-    a {
-        float: left;
-        display: block;
-    }
-    
-    .auth-buttons {
-        float: right;
-    }
+  a {
+    float: left;
+    display: block;
+    cursor: pointer;
+  }
 
-    .auth-buttons a {
-        padding-right: 1rem;
-    }
+  .auth-buttons {
+    float: right;
+  }
+
+  .auth-buttons a {
+    padding-right: 1rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .navbar {
-        padding: 0;
-        margin: 0;
+  .navbar {
+    padding: 0;
+    margin: 0;
 
-        .auth-buttons {
-            float: none;
-        }
+    .auth-buttons {
+      float: none;
+    }
 
-        a {
-            float: none;
-            display: block;
-            width: 100%;
-            margin: 0;
-            padding: 0.5rem;
-            text-align: center;
-        }
-  
-      .title {
-        margin-bottom: 0.5rem;
-        font-size: 1.25rem;
-      }
+    a {
+      float: none;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    .title {
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
     }
   }
+}

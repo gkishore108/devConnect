@@ -1,7 +1,15 @@
 @import "../styles/mixins.scss";
 
 .class {
-    button {
-        @include btn();
-    }
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    @include btn();
+  }
+
+  .title {
+    text-align: center;
+  }
 }

@@ -126,14 +126,15 @@ router.put("/videoCard/like/:id", auth, async (req, res) => {
       });
     }
 
-    if (
-      userPost.likes.filter((like) => like.user.toString() === req.user)
-        .length > 0
-    ) {
-      return res.status(400).json({
-        errorMessage: "Post already liked!",
-      });
-    }
+    // User cant like more than once logic
+    // if (
+    //   userPost.likes.filter((like) => like.user.toString() === req.user)
+    //     .length > 0
+    // ) {
+    //   return res.status(400).json({
+    //     errorMessage: "Post already liked!",
+    //   });
+    // }
 
     userPost.likes.unshift({ user: req.user });
     await userPost.save();

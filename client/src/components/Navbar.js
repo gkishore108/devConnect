@@ -14,9 +14,14 @@ function Navbar() {
   const history = useHistory();
 
   const authLinks = (
-    <div className='auth-buttons'>
+    <div className="auth-buttons">
+      <Link to="/my-post">
+        <i className="fas fa-portrait" aria-hidden="true"></i>
+        <span>My Posts</span>
+      </Link>
+
       <Link onClick={() => dispatch(logout())}>
-        <i class='fa fa-sign-out' aria-hidden='true'></i>
+        <i className="fa fa-sign-out" aria-hidden="true"></i>
         <span>Logout</span>
       </Link>
       {history.push("/login")}
@@ -24,15 +29,15 @@ function Navbar() {
   );
 
   const guestLinks = (
-    <div className='auth-buttons'>
-      <Link to='/login'>Log In</Link>
-      <Link to='/register'>Register</Link>
+    <div className="auth-buttons">
+      <Link to="/login">Log In</Link>
+      <Link to="/register">Register</Link>
     </div>
   );
   return (
-    <nav className='navbar'>
-      <Link to='/'>
-        <h1 className='title'>dev.connect()</h1>
+    <nav className="navbar">
+      <Link to="/">
+        <h1 className="title">dev.connect()</h1>
       </Link>
       {!loading && <>{isAuthenticated ? authLinks : guestLinks} </>}
     </nav>
