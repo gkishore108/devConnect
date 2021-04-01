@@ -4,6 +4,7 @@ const User = require("../../models/UserModel");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const config = require("config");
 
 // @route  GET auth/
 // @desc   Get authenticated user
@@ -51,7 +52,7 @@ router.post("/", async (req, res) => {
       id: isUser.id,
     };
 
-    jwt.sign(payload, process.env.JSEC, (error, token) => {
+    jwt.sign(payload, config.get("JSEC"), (error, token) => {
       if (error) throw error;
       res.json({ token });
     });
