@@ -1,5 +1,5 @@
 const express = require("express");
-const UserPost = require("../../models/VideoCardModel");
+const UserPost = require("../../models/videoCardModel");
 const auth = require("../../middleware/auth");
 const User = require("../../models/UserModel");
 
